@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Parqueaderos - Sistema de Parqueaderos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f0f8ff; /* Azul claro */
+        }
+        .navbar {
+            background-color: #aeeeee; /* Azul claro */
+        }
+        .nav-link {
+            font-weight: bold;
+            color: #007bff; /* Azul más oscuro para el texto */
+        }
+        .nav-link:hover {
+            color: #0056b3; /* Azul más oscuro al pasar el ratón */
+        }
+        .btn-primary {
+            background-color: #5f9ea0; /* Azul claro */
+            border-color: #5f9ea0; /* Mismo color de borde */
+        }
+        .btn-primary:hover {
+            background-color: #4682b4; /* Azul más oscuro al pasar el ratón */
+            border-color: #4682b4; /* Mismo color de borde al pasar el ratón */
+        }
+        .btn-secondary {
+            background-color: #d3d3d3; /* Gris claro */
+            border-color: #d3d3d3; /* Mismo color de borde */
+        }
+        .btn-secondary:hover {
+            background-color: #c0c0c0; /* Gris más oscuro al pasar el ratón */
+            border-color: #c0c0c0; /* Mismo color de borde al pasar el ratón */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sistema de Parqueaderos</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_parqueaderos' %}">Parqueaderos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_facturas' %}">Facturas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_empleados' %}">Empleados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_reservas' %}">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_registros_acceso' %}">Registro de Acceso</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_carros' %}">Carros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container mt-5">
+        <h1 class="text-center text-primary">Lista de Parqueaderos</h1>
+        <p class="text-center">A continuación se muestra la lista de todos los parqueaderos registrados.</p>
+
+        <div class="text-center mb-4">
+            <a href="{% url 'registrar_parqueadero' %}" class="btn btn-primary btn-lg mx-2">Registrar Parqueadero</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary btn-lg mx-2">Volver al Inicio</a>
+        </div>
+
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Ubicación</th>
+                    <th>Capacidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for parqueadero in parqueaderos %}
+                <tr>
+                    <td>{{ parqueadero.id }}</td>
+                    <td>{{ parqueadero.nombre }}</td>
+                    <td>{{ parqueadero.ubicacion }}</td>
+                    <td>{{ parqueadero.capacidad }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_parqueadero' parqueadero.id %}" class="btn btn-warning btn-sm">Actualizar</a>
+                        <a href="{% url 'eliminar_parqueadero' parqueadero.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay parqueaderos registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

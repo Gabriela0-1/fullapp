@@ -33,6 +33,7 @@ class Reserva(models.Model):
     fecha_inicio = models.DateTimeField()
     fecha_final = models.DateTimeField()
     estado = models.CharField(max_length=50)
+    
 
     def __str__(self):
         return f"Reserva de {self.cliente} - {self.carro}"
@@ -52,6 +53,7 @@ class Empleado(models.Model):
     correo = models.EmailField()
 
     def __str__(self):
+
         return self.nombre
 
 class RegistroAcceso(models.Model):
@@ -65,3 +67,4 @@ class RegistroAcceso(models.Model):
 
     def __str__(self):
         return f"Acceso de {self.cliente} con {self.carro} en {self.parqueadero}"
+

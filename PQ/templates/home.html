@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sistema de Parqueaderos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f0f8ff; /* Azul claro */
+        }
+        .navbar {
+            background-color: #aeeeee; /* Azul claro */
+        }
+        .nav-link {
+            font-weight: bold;
+            color: #007bff; /* Azul más oscuro para el texto */
+        }
+        .nav-link:hover {
+            color: #0056b3; /* Azul más oscuro al pasar el ratón */
+        }
+        .btn-custom {
+            background-color: #5f9ea0; /* Azul claro */
+            border-color: #5f9ea0; /* Mismo color de borde */
+            border-radius: 20px; /* Bordes redondeados */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra más prominente */
+            transition: background-color 0.3s, transform 0.3s; /* Efecto de transición */
+            font-size: 1.5rem; /* Tamaño de fuente más grande */
+            padding: 15px 30px; /* Relleno mayor para hacerlos más grandes */
+            margin: 15px 0; /* Separación vertical */
+        }
+        .btn-custom:hover {
+            background-color: #4682b4; /* Azul más oscuro al pasar el ratón */
+            border-color: #4682b4; /* Mismo color de borde al pasar el ratón */
+            transform: translateY(-2px); /* Efecto de elevación */
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #007bff; /* Azul para el texto del pie de página */
+        }
+        .description {
+            margin: 10px 0; /* Margen para las descripciones */
+            font-size: 1.1rem; /* Tamaño de fuente de las descripciones */
+            color: #555; /* Color gris para las descripciones */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sistema de Parqueaderos</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_parqueaderos' %}">Parqueaderos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_facturas' %}">Facturas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_empleados' %}">Empleados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_reservas' %}">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_registros_acceso' %}">Registro de Acceso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_carros' %}">Carros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container mt-5">
+        <h1 class="text-center text-primary">Bienvenido al Sistema de Parqueaderos</h1>
+        <p class="text-center">Gestione clientes, parqueaderos, facturas, empleados, reservas y accesos de manera eficiente.</p>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="{% url 'listar_clientes' %}" class="btn btn-custom btn-lg mx-4">Gestionar Clientes</a>
+                <p class="description">Administra la información de los clientes y sus datos de contacto.</p>
+                
+                <a href="{% url 'listar_parqueaderos' %}" class="btn btn-custom btn-lg mx-4">Gestionar Parqueaderos</a>
+                <p class="description">Visualiza y gestiona la disponibilidad de los parqueaderos.</p>
+
+                <a href="{% url 'listar_facturas' %}" class="btn btn-custom btn-lg mx-4">Gestionar Facturas</a>
+                <p class="description">Emite y revisa las facturas generadas por las reservas.</p>
+
+                <a href="{% url 'listar_empleados' %}" class="btn btn-custom btn-lg mx-4">Gestionar Empleados</a>
+                <p class="description">Controla la información de los empleados que laboran en el parqueadero.</p>
+
+                <a href="{% url 'listar_reservas' %}" class="btn btn-custom btn-lg mx-4">Gestionar Reservas</a>
+                <p class="description">Gestiona las reservas realizadas por los clientes.</p>
+
+                <a href="{% url 'listar_registros_acceso' %}" class="btn btn-custom btn-lg mx-4">Gestionar Registro de Acceso</a>
+                <p class="description">Consulta el historial de accesos al parqueadero.</p>
+
+                <a href="{% url 'listar_carros' %}" class="btn btn-custom btn-lg mx-4">Gestionar Carros</a>
+                <p class="description">Administra la información de los carros registrados.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <p>&copy; Por gabriela alejandra carmona cardenas</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Actualizar Cliente</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ cliente.nombre }}" required>
+        </div>
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" value="{{ cliente.apellido }}" required>
+        </div>
+        <div>
+            <button type="submit">Actualizar</button>
+        </div>
+    </form>
+    <a href="{% url 'listar_clientes' %}">Volver a la lista de clientes</a>
+</div>
+{% endblock %}
